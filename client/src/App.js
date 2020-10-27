@@ -5,7 +5,6 @@ import { Route, Link } from 'react-router-dom'
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
-import Home from './components/home'
 import Set from './pages/set';
 
 class App extends Component {
