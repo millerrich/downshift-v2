@@ -3,6 +3,7 @@ import TimeKeeper from 'react-timekeeper';
 import { CardGroup, Card, Nav } from 'react-bootstrap';
 import '../App.css'
 import moment from 'moment';
+import Slots from "../components/slot.js";
 
 function setAlarm() {
   let current = moment().format('h:mm a');
@@ -31,6 +32,7 @@ function setAlarm() {
           </div>
         </Card>
       </CardGroup>
+      <Slots />
 
     </>
   )
