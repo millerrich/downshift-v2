@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Slots from "./slot";
 
 class Home extends Component {
-    constructor() {
-        super()
-    }
+  constructor() {
+    super()
+  }
 
 
     render() {
@@ -18,8 +18,7 @@ class Home extends Component {
                 <Slots />
             </div>
         )
-
-    }
+  }
 }
 
 export default Home

@@ -6,6 +6,7 @@ import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import Set from './pages/set';
 
 class App extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class App extends Component {
     this.getUser()
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
   }
 
@@ -52,16 +53,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-   
+
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
-          <p>Join the party, {this.state.username}!</p>
+          <p>Hello, {this.state.username}, welcome to Downshift!</p>
         }
         {/* Routes to different components */}
         <Route
           exact path="/"
-          component={Home} />
+          component={Set} />
         <Route
           path="/login"
           render={() =>
@@ -72,7 +73,7 @@ class App extends Component {
         <Route
           path="/signup"
           render={() =>
-            <Signup/>}
+            <Signup />}
         />
 
       </div>

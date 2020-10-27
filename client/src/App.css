@@ -56,6 +56,7 @@ section {
 
 }
 
+
 @keyframes blinkingText {
   0% {
     color: #000;
@@ -72,4 +73,21 @@ section {
   100% {
     color: #000;
   }
+  
+.clock{
+  box-shadow: 2px 4px 4px black;
+}
+
+.timeSet{
+  font-size: 20px;
+}
+.homeCard{
+  margin-left: -2px;
+  margin-right: -2px;
+  height: 20rem;
+  background-color: #85CDCA !important;
+}
+
+.navColor{
+  background-color: #233C67;
 }
