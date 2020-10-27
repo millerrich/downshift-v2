@@ -19,7 +19,8 @@ router.post('/', (req, res) => {
     else {
       const newUser = new User({
         username: username,
-        password: password
+        password: password,
+        breaktime: ""
       })
       newUser.save((err, savedUser) => {
         if (err) return res.json(err)
@@ -62,6 +63,14 @@ router.post('/logout', (req, res) => {
     res.send({ msg: 'logging out' })
   } else {
     res.send({ msg: 'no user to log out' })
+  }
+})
+
+router.put('/', (req, res) => {
+  if (req.user) {
+    res.send({ msg: "breaktime" })
+  } else {
+    res.send({ msg: 'no user' })
   }
 })
 
