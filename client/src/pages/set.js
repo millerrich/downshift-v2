@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import TimeKeeper from 'react-timekeeper';
 import {CardGroup, Card, Nav } from 'react-bootstrap';
 import '../App.css'
-import Navbar from './Navbar';
+import moment from 'moment';
 
 function setAlarm() {
-    const [time, setTime] = useState('12:34pm')
+    let current = moment().format('h:mm a');
+
+    const [time, setTime] = useState(current)
 
     return (
 
         <>
 
-            < Navbar />
             <CardGroup>
                 <Card className="homeCard">
                     <div className="mt-5" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
@@ -24,6 +25,7 @@ function setAlarm() {
                                 <Card.Text className="text-center">
                                     <span className="timeSet">Selected Time: {time}</span>
                                 </Card.Text>
+                                    <button className="setAlarm">Set Alarm</button>
                             </Card.Body>
                         </Card>
                     </div>
