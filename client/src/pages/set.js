@@ -6,6 +6,8 @@ import moment from 'moment';
 import Slots from "../components/slot";
 import axios from 'axios';
 
+let timeArray = [];
+
 function setAlarm() {
   let current = moment().format('h:mm a');
 
@@ -13,7 +15,6 @@ function setAlarm() {
 
   
   function saveBreak(){
-    let timeArray = [];
     timeArray.push(time);
     console.log(timeArray);
     axios.put("/user", {breaktime: timeArray})
