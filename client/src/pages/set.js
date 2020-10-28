@@ -14,7 +14,8 @@ function setAlarm() {
   const [time, setTime] = useState(current)
 
   function saveBreak() {
-    axios.put("/user", { break: time })
+    timeArray.push(time);
+    axios.put("/user", { breaktime: timeArray })
       .then(req => {
         if (req.user) {
           console.log(time);
