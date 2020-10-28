@@ -5,8 +5,10 @@ import '../App.css'
 import moment from 'moment';
 import Slots from "../components/slot";
 import axios from 'axios';
+import Schedule from '../components/schedule';
 
 let timeArray = [];
+let savedTimes;
 
 function setAlarm() {
   let current = moment().format('h:mm a');
@@ -21,7 +23,20 @@ function setAlarm() {
           console.log(time);
         }
       })
+      getBreaks();
   }
+
+  function getBreaks() {
+    axios.get("/user/userdata")
+    .then(function (response) {
+      // console.log(response.data)
+      savedTimes = response.data.breaktime;
+      console.log(savedTimes);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
 
   return (
 
@@ -43,6 +58,8 @@ function setAlarm() {
             </Card>
           </div>
           <Slots />
+      <h3>SCHEDULE</h3>
+      {/* {savedTimes.map(times => <p>{times}</p>)} */}
         </Card>
       </CardGroup>
     </>
