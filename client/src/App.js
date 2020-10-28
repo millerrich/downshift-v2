@@ -57,7 +57,7 @@ class App extends Component {
           <p>Hello {this.state.username}, welcome to Downshift!</p>
         }
         {/* Routes to different components */}
-        <Route exact path="/">
+        <Route path="/">
           {this.state.loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
         </Route>
         <Route
