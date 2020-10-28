@@ -11,13 +11,13 @@ function setAlarm() {
 
   const [time, setTime] = useState(current)
 
-  function saveBreak(){
-    axios.put("/user", {break: time})
-    .then(req => {
-      if(req.user){
-        console.log(time);
-      }
-    })
+  function saveBreak() {
+    axios.put("/user", { break: time })
+      .then(req => {
+        if (req.user) {
+          console.log(time);
+        }
+      })
   }
 
   return (
@@ -39,7 +39,7 @@ function setAlarm() {
               </Card.Body>
             </Card>
           </div>
-      <Slots />
+          <Slots />
         </Card>
       </CardGroup>
     </>

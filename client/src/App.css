@@ -3,15 +3,8 @@
   text-align: center;
 }
 
-.slot {
-  position: relative;
-  display: inline-block;
-  height: 100px;
-  width: 80px;
-}
-
 section {
-  position: absolute;
+  position: relative;
   border-radius: 15px !important;
   border: 3px solid black !important;
   width: 300px;
@@ -26,19 +19,21 @@ section {
   font-size: 25px;
   line-height: 60px;
   cursor: default;
+  margin: 0 auto !important;
 }
 
 .container {
-  position: absolute;
+  position: relative;
   top: 2px;
   width: 100%  !important;
   transition: top ease-in-out 0.5s;
   text-align: center;
   font-size: 30pt;
-  margin: 0 auto !important;
+  margin: 0 auto
 }
 
 .roll {
+  position: relative;
   width: 215px;
   cursor: pointer;
   background-color: yellow;
@@ -51,6 +46,7 @@ section {
 }
 
 .rolling {
+  position: relative;
   animation: blinkingText 1.2s infinite;
   margin: 0 auto;
 
