@@ -32,13 +32,10 @@ router.post('/', (req, res) => {
 router.post(
   '/login',
   function (req, res, next) {
-    console.log('routes/user.js, login, req.body: ');
-    console.log(req.body)
     next()
   },
   passport.authenticate('local'),
   (req, res) => {
-    console.log('logged in', req.user);
     var userInfo = {
       username: req.user.username
     };
@@ -47,8 +44,7 @@ router.post(
 )
 
 router.get('/', (req, res) => {
-  console.log('===== user!!======')
-  console.log(req.user)
+  console.log(req.body);
   if (req.user) {
     res.json({ user: req.user })
   } else {
@@ -56,14 +52,6 @@ router.get('/', (req, res) => {
   }
 })
 
-router.get('/userdata', (req, res) => {
-  User.findAll( {}, (err, user) => {
-    if (err) throw err;
-      res.json(
-        user
-    )
-})
-})
 
 router.post('/logout', (req, res) => {
   if (req.user) {
@@ -76,9 +64,6 @@ router.post('/logout', (req, res) => {
 
 router.put('/', (req, res) => {
   if (req.user) {
-    console.log("wazzzzzzup");
-    console.log("breaktime", req.user.breaktime);
-    console.log("user", req.user);
     User.findByIdAndUpdate({_id: req.user._id}, {breaktime: req.body.breaktime}, function(err, result) {
       if (err) {
         res.send(err);
@@ -87,7 +72,21 @@ router.put('/', (req, res) => {
       }
     });
   } else {
-    console.log("loggggggggg innnnnnnnn")
+    res.send({ msg: 'no user' })
+  }
+})
+
+router.get('/userdata', (req, res) => {
+  if (req.user) {
+    User.findById({_id: req.user._id}, function(err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+        console.log(result);
+      }
+    });
+  } else {
     res.send({ msg: 'no user' })
   }
 })

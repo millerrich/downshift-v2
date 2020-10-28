@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 class Slots extends Component {
@@ -49,18 +50,20 @@ class Slots extends Component {
 
   render() {
     return (
-      <div className="SlotMachine">
-        <div className="slot">
-          <section>
-            <div className="container " ref={this.slotRef[0]}>
-              {Slots.defaultProps.options.map((option, i) => (
-                <div key={i}>
-                  <span>{option}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
+      <Container>
+        <Row>
+          <Col>
+            <section>
+              <Container ref={this.slotRef[0]}>
+                {Slots.defaultProps.options.map((option, i) => (
+                  <div key={i}>
+                    <span>{option}</span>
+                  </div>
+                ))}
+              </Container>
+            </section>
+          </Col>
+        </Row>
         {/* <div className="slot">
           <section>
             <div className="container" ref={this.slotRef[1]}>
@@ -83,14 +86,18 @@ class Slots extends Component {
             </div>
           </section>
         </div> */}
-        <div
-          className={!this.state.rolling ? "roll rolling" : "roll"}
-          onClick={!this.state.rolling && this.roll}
-          disabled={this.state.rolling}
-        >
-          {this.state.rolling ? "Rolling..." : "ROLL"}
-        </div>
-      </div>
+        <Row>
+          <Col>
+            <div
+              className={!this.state.rolling ? "roll rolling" : "roll"}
+              onClick={!this.state.rolling && this.roll}
+              disabled={this.state.rolling}
+            >
+              {this.state.rolling ? "Rolling..." : "ROLL"}
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
