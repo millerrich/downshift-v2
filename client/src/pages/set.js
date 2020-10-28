@@ -15,7 +15,6 @@ function setAlarm() {
 
   
   function saveBreak(){
-   
     timeArray.push(time);
     console.log(timeArray);
     axios.put("/user", {breaktime: timeArray})
