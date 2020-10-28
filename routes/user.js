@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
       const newUser = new User({
         username: username,
         password: password,
-        breaktime: ""
+        breaktime: ['11:11 am']
       })
       newUser.save((err, savedUser) => {
         if (err) return res.json(err)
