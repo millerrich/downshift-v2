@@ -76,8 +76,16 @@ router.post('/logout', (req, res) => {
 
 router.put('/', (req, res) => {
   if (req.user) {
-    // console.log("wazzzzzzup");
-    User.replaceOne({_id}, {breaktime: [timeArray]});
+    console.log("wazzzzzzup");
+    console.log("breaktime", req.user.breaktime);
+    console.log("user", req.user);
+    User.findByIdAndUpdate({_id: req.user._id}, {breaktime: req.body.breaktime}, function(err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    });
   } else {
     console.log("loggggggggg innnnnnnnn")
     res.send({ msg: 'no user' })
