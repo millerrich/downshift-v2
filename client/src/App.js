@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 // components
 import Signup from './components/sign-up';
@@ -57,8 +57,11 @@ class App extends Component {
           <p>Hello {this.state.username}, welcome to Downshift!</p>
         }
         {/* Routes to different components */}
+        <Route exact path="/">
+          {this.state.loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />}
+        </Route>
         <Route
-          exact path="/"
+          path="/home"
           component={Set} />
         <Route
           path="/login"
