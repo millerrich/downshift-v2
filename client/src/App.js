@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
+import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
+import Signup from './components/sign-up';
+import LoginForm from './components/login-form';
+import Navbar from './components/navbar';
 import Set from './pages/set';
 
 class App extends Component {
@@ -51,7 +52,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Container fluid className="App">
 
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
@@ -74,8 +75,7 @@ class App extends Component {
           render={() =>
             <Signup />}
         />
-
-      </div>
+      </Container>
     );
   }
 }
