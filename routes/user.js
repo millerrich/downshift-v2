@@ -76,8 +76,10 @@ router.post('/logout', (req, res) => {
 
 router.put('/', (req, res) => {
   if (req.user) {
-    res.send({ msg: "breaktime" })
+    // console.log("wazzzzzzup");
+    User.replaceOne({_id}, {breaktime: [timeArray]});
   } else {
+    console.log("loggggggggg innnnnnnnn")
     res.send({ msg: 'no user' })
   }
 })
