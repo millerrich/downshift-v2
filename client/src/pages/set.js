@@ -11,12 +11,11 @@ let timeArray = [];
 
 function setAlarm() {
   let current = moment().format('h:mm a');
-
   const [time, setTime] = useState(current)
 
   useEffect(() => {
     getBreaks();
-  },[])
+  })
 
   function saveBreak() {
     timeArray.push(time);
@@ -44,7 +43,6 @@ function setAlarm() {
   };
 
   return (
-
     <>
       <CardGroup>
         <Card className="homeCard">
@@ -66,10 +64,9 @@ function setAlarm() {
           <div className="container">
       <h3>SCHEDULE</h3>
       <ul>
-      {/* {timeArray.map((times, index) => <li> key={index} {...times}</li>)} */}
+     {timeArray.map((t, index) => <li>{t}</li>)} 
       </ul>
       </div>
-      {/* {savedTimes.map(times => <p>{...times}</p>)} */}
         </Card>
       </CardGroup>
     </>
