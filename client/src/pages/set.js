@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TimeKeeper from 'react-timekeeper';
-import { CardGroup, Card, Nav } from 'react-bootstrap';
+import { CardGroup, Card} from 'react-bootstrap';
 import '../App.css'
 import moment from 'moment';
 import Slots from "../components/slot";

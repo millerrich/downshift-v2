@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { Route, Link } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios';
 
@@ -14,7 +13,6 @@ class Navbar extends Component {
 
   logout(event) {
     event.preventDefault()
-    console.log('logging out')
     axios.post('/user/logout').then(response => {
       console.log(response.data)
       if (response.status === 200) {
@@ -30,8 +28,6 @@ class Navbar extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
-    console.log('navbar render, props: ')
-    console.log(this.props);
 
     return (
 
