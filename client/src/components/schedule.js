@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Schedule() {
+function Schedule(props) {
 
     return (
         <>
-        <div className="container">
-
-        </div>
+        <li>
+            {props}
+        </li>
         </>
     )
 }
