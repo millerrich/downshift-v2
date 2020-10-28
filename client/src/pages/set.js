@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TimeKeeper from 'react-timekeeper';
 import { CardGroup, Card} from 'react-bootstrap';
 import '../App.css'
@@ -8,12 +8,15 @@ import axios from 'axios';
 import Schedule from '../components/schedule';
 
 let timeArray = [];
-let savedTimes;
 
 function setAlarm() {
   let current = moment().format('h:mm a');
 
   const [time, setTime] = useState(current)
+
+  useEffect(() => {
+    getBreaks();
+  },[])
 
   function saveBreak() {
     timeArray.push(time);
@@ -30,8 +33,10 @@ function setAlarm() {
     axios.get("/user/userdata")
     .then(function (response) {
       // console.log(response.data)
-      savedTimes = response.data.breaktime;
-      console.log(savedTimes);
+      timeArray = [];
+      let x = response.data.breaktime;
+      x.map(t => timeArray.push(t));
+      console.log(timeArray);
     })
     .catch(function (error) {
       console.log(error);
@@ -58,8 +63,13 @@ function setAlarm() {
             </Card>
           </div>
           <Slots />
+          <div className="container">
       <h3>SCHEDULE</h3>
-      {/* {savedTimes.map(times => <p>{times}</p>)} */}
+      <ul>
+      {/* {timeArray.map((times, index) => <li> key={index} {...times}</li>)} */}
+      </ul>
+      </div>
+      {/* {savedTimes.map(times => <p>{...times}</p>)} */}
         </Card>
       </CardGroup>
     </>
