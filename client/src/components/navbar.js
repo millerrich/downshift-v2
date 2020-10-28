@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import logo from '../logo.svg';
 import '../App.css';
-import axios from 'axios'
+import axios from 'axios';
 
 class Navbar extends Component {
   constructor() {
@@ -33,41 +34,36 @@ class Navbar extends Component {
     console.log(this.props);
 
     return (
-      <div>
 
-        <header className="navbar App-header" id="nav-container">
-          <div className="col-4" >
-            {loggedIn ? (
-              <section className="navbar-section">
-                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">logout</span></Link>
+      <Container fluid className="navColor">
+        <Row>
+          {loggedIn ? (
+            <Col className="navbar-section float-left">
+              <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                <span className="text-secondary">logout</span></Link>
 
-              </section>
-            ) : (
-                <section className="navbar-section">
-                  <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">home</span>
-                  </Link>
-                  <Link to="/login" className="btn btn-link text-secondary">
-                    <span className="text-secondary">login</span>
-                  </Link>
-                  <Link to="/signup" className="btn btn-link">
-                    <span className="text-secondary">sign up</span>
-                  </Link>
-                </section>
-              )}
-          </div>
-          <div className="col-4 col-mr-auto">
-            <div id="top-filler"></div>
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Downshift</h1>
-          </div>
-        </header>
-      </div>
-
+            </Col>
+          ) : (
+              <Col className="navbar-section float-left">
+                <Link to="/" className="btn btn-link text-secondary">
+                  <span className="text-secondary">home</span>
+                </Link>
+                <Link to="/login" className="btn btn-link text-secondary">
+                  <span className="text-secondary">login</span>
+                </Link>
+                <Link to="/signup" className="btn btn-link">
+                  <span className="text-secondary">sign up</span>
+                </Link>
+              </Col >
+            )}
+          <Col>
+            <h1 className="App-title text-secondary">Downshift</h1>
+          </Col>
+        </Row>
+      </Container>
     );
 
   }
 }
 
-export default Navbar
+export default Navbar;

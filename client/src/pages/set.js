@@ -6,13 +6,19 @@ import moment from 'moment';
 import Slots from "../components/slot";
 import axios from 'axios';
 
+let timeArray = [];
+
 function setAlarm() {
   let current = moment().format('h:mm a');
 
   const [time, setTime] = useState(current)
 
+  
   function saveBreak(){
-    axios.put("/user", {breaktime: time})
+   
+    timeArray.push(time);
+    console.log(timeArray);
+    axios.put("/user", {breaktime: timeArray})
     .then(req => {
       if(req.user){
         console.log(time);
