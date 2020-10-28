@@ -39,9 +39,9 @@ function setAlarm() {
               </Card.Body>
             </Card>
           </div>
+      <Slots />
         </Card>
       </CardGroup>
-      <Slots />
     </>
   )
 }
