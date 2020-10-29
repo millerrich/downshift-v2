@@ -1,15 +1,28 @@
-import React, { Component, createRef } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
-
+import React, { Component, createRef } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Slots extends Component {
   static defaultProps = {
-    options: ["Meditate", "Yoga", "Run", "Walk the Dog", "Read", "Paint", "Journal", "Brain Teasers"]
+    options: [
+      "Meditate",
+      "Yoga",
+      "Run",
+      "Walk the Dog",
+      "Read",
+      "Paint",
+      "Journal",
+      "Brain Teasers"
+    ]
   };
 
   constructor(props) {
     super(props);
-    this.state = { option1: "Meditate", option2: "Run", option3: "Read", rolling: false };
+    this.state = {
+      option1: "Meditate",
+      option2: "Run",
+      option3: "Read",
+      rolling: false
+    };
 
     // get ref of dic onn which elements will roll
     this.slotRef = [createRef()];
@@ -31,11 +44,12 @@ class Slots extends Component {
       const selected = this.triggerSlotRotation(slot.current);
       this.setState({ [`option${i + 1}`]: selected });
     });
-
+    
+  this.props.goBack(true);
   };
 
   // this will create a rolling effect and return random selected option
-  triggerSlotRotation = ref => {
+  triggerSlotRotation = (ref) => {
     function setTop(top) {
       ref.style.top = `${top}px`;
     }
@@ -101,4 +115,4 @@ class Slots extends Component {
     );
   }
 }
-export default Slots
+export default Slots;
