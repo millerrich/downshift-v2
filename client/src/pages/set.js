@@ -7,15 +7,18 @@ import Slots from "../components/slot";
 import axios from 'axios';
 import Schedule from '../components/schedule';
 
-let timeArray = [];
-
 function setAlarm() {
   let current = moment().format('h:mm a');
-  const [time, setTime] = useState(current)
+  const [time, setTime] = useState(current);
+  const [timeArray, setTimeArray] = useState([]);
 
   useEffect(() => {
     getBreaks();
-  })
+  }, []);
+
+  useEffect(() => {
+
+  }, [timeArray]);
 
   function saveBreak() {
     timeArray.push(time);
@@ -31,11 +34,7 @@ function setAlarm() {
   function getBreaks() {
     axios.get("/user/userdata")
     .then(function (response) {
-      // console.log(response.data)
-      timeArray = [];
-      let x = response.data.breaktime;
-      x.map(t => timeArray.push(t));
-      console.log(timeArray);
+    setTimeArray(response.data.breaktime);
     })
     .catch(function (error) {
       console.log(error);
