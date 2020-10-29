@@ -8,17 +8,16 @@ import axios from 'axios';
 import Schedule from '../components/schedule';
 
 function setAlarm() {
+
+
   let current = moment().format('h:mm a');
+  
   const [time, setTime] = useState(current);
   const [timeArray, setTimeArray] = useState([]);
 
   useEffect(() => {
     getBreaks();
   }, []);
-
-  useEffect(() => {
-
-  }, [timeArray]);
 
   function saveBreak() {
     timeArray.push(time);
