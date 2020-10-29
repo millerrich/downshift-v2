@@ -13,9 +13,9 @@ function setAlarm() {
   let current = moment().format('h:mm a');
   const [time, setTime] = useState(current)
 
-  // useEffect(() => {
-  //   getBreaks();
-  // })
+  useEffect(() => {
+    getBreaks();
+  })
 
   function saveBreak() {
     timeArray.push(time);
