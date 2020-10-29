@@ -13,24 +13,24 @@ function setAlarm() {
   const [time, setTime] = useState(current)
   const [timeArray, setTimeArray] = useState([]);
 
-  timeArray.forEach(t => {
-    if(t === seconds){
-      alert("test");
-      console.log("test");
-    }
-  })
 
   useEffect(() => {
-    let interval = null;
-    interval = setInterval(function () {
-    current = moment().format('h:mm a');
-    setSeconds(current);
-
-    // console.log(current);
-    }, 1000);
-
+    getTime();
     getBreaks();
   }, []);
+
+  useEffect(() => {
+    if(timeArray.includes(seconds)){
+      alert("TAKE A BREAK PUNK"); 
+    }
+  }, [seconds]);
+
+  function getTime(){
+    setInterval(function () {
+      current = moment().format('h:mm a');
+      setSeconds(current);
+      }, 1000);
+  }
 
   function saveBreak() {
     setTimeArray(timeArray.concat(time))
