@@ -13,16 +13,16 @@ function setAlarm() {
   let current = moment().format('h:mm a');
   const [time, setTime] = useState(current)
 
-  useEffect(() => {
-    getBreaks();
-  })
+  // useEffect(() => {
+  //   getBreaks();
+  // })
 
   function saveBreak() {
     timeArray.push(time);
     axios.put("/user", { breaktime: timeArray })
       .then(req => {
         if (req.user) {
-          console.log(time);
+          console.log("updated");
         }
       })
       getBreaks();
@@ -42,6 +42,21 @@ function setAlarm() {
     });
   };
 
+  function deleteBreak(event, index) {
+    event.preventDefault();
+    console.log("clicked")
+    console.log(index);
+    let removeTime = [];
+    removeTime = timeArray.splice(index, 1)
+    console.log(removeTime);
+    axios.put("/user", { breaktime: timeArray })
+    .then(req => {
+      if (req.user) {
+        console.log("removed");
+        }
+      })
+      .then(getBreaks());
+  }
   return (
     <>
       <CardGroup>
@@ -62,15 +77,21 @@ function setAlarm() {
           </div>
           <Slots />
           <div className="container">
+      <CardGroup>
+        <Card>
       <h3>SCHEDULE</h3>
-      <ul>
-     {timeArray.map((t, index) => <li>{t}</li>)} 
-      </ul>
+          <Card.Body>
+     {timeArray.map((t, index) => <li key={index}>{t}<button onClick={event => {deleteBreak(event, index)}}>REMOVE</button></li>)}
+          </Card.Body>
+        </Card>
+      </CardGroup>
+      
       </div>
         </Card>
       </CardGroup>
     </>
   )
 }
+
 
 export default setAlarm;
