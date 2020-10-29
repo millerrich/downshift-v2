@@ -7,7 +7,6 @@ import Slots from "../components/slot";
 import axios from 'axios';
 import Schedule from '../components/schedule';
 
-// let timeArray = [];
 
 function setAlarm() {
   let current = moment().format('h:mm a');
