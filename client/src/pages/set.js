@@ -6,16 +6,29 @@ import moment from 'moment';
 import Slots from "../components/slot";
 import axios from 'axios';
 import Schedule from '../components/schedule';
+let current;
 
 function setAlarm() {
-
-
-  let current = moment().format('h:mm a');
-  
-  const [time, setTime] = useState(current);
+  const [seconds, setSeconds] = useState(current)
+  const [time, setTime] = useState(current)
   const [timeArray, setTimeArray] = useState([]);
 
+  timeArray.forEach(t => {
+    if(t === seconds){
+      alert("test");
+      console.log("test");
+    }
+  })
+
   useEffect(() => {
+    let interval = null;
+    interval = setInterval(function () {
+    current = moment().format('h:mm a');
+    setSeconds(current);
+
+    // console.log(current);
+    }, 1000);
+
     getBreaks();
   }, []);
 
@@ -57,13 +70,15 @@ function setAlarm() {
   }
   return (
     <>
+       <p>{seconds}</p>
       <CardGroup>
         <Card className="homeCard">
           <div className="mt-5" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+       
             <Card className="clock">
               <TimeKeeper
                 time={time}
-                onChange={(data) => setTime(data.formatted24)}
+                onChange={(data) => setTime(data.formatted12)}
               />
               <Card.Body>
                 <Card.Text className="text-center">
