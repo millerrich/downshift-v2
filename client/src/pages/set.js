@@ -7,34 +7,29 @@ import Slots from "../components/slot";
 import axios from 'axios';
 import Schedule from '../components/schedule';
 
+
 function setAlarm() {
   let current = moment().format('h:mm a');
-  const [time, setTime] = useState(current);
+  const [time, setTime] = useState(current)
   const [timeArray, setTimeArray] = useState([]);
 
   useEffect(() => {
     getBreaks();
   }, []);
 
-  useEffect(() => {
-
-  }, [timeArray]);
 
   function saveBreak() {
-    timeArray.push(time);
+    setTimeArray(timeArray.concat(time));
     axios.put("/user", { breaktime: timeArray })
-      .then(req => {
-        if (req.user) {
-          console.log("updated");
-        }
+      .then(res => {
+        console.log(res)
       })
-      getBreaks();
   }
 
   function getBreaks() {
     axios.get("/user/userdata")
     .then(function (response) {
-    setTimeArray(response.data.breaktime);
+      setTimeArray(response.data.breaktime);
     })
     .catch(function (error) {
       console.log(error);
@@ -56,6 +51,8 @@ function setAlarm() {
       })
       .then(getBreaks());
   }
+
+
   return (
     <>
       <CardGroup>
