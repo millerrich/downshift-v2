@@ -1,39 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import TimeKeeper from 'react-timekeeper';
-import { CardGroup, Card} from 'react-bootstrap';
+import { CardGroup, Card, Button } from 'react-bootstrap';
 import '../App.css'
 import moment from 'moment';
 import Slots from "../components/slot";
 import axios from 'axios';
 import Schedule from '../components/schedule';
 
-
 function setAlarm() {
   let current = moment().format('h:mm a');
-  const [time, setTime] = useState(current)
+  const [time, setTime] = useState(current);
   const [timeArray, setTimeArray] = useState([]);
 
   useEffect(() => {
     getBreaks();
   }, []);
 
+  useEffect(() => {
+
+  }, [timeArray]);
 
   function saveBreak() {
-    setTimeArray(timeArray.concat(time));
-    axios.put("/user", { breaktime: timeArray.concat(time) })
-      .then(res => {
-        console.log(res)
+    timeArray.push(time);
+    axios.put("/user", { breaktime: timeArray })
+      .then(req => {
+        if (req.user) {
+          console.log("updated");
+        }
       })
+    getBreaks();
   }
 
   function getBreaks() {
     axios.get("/user/userdata")
-    .then(function (response) {
-      setTimeArray(response.data.breaktime);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        setTimeArray(response.data.breaktime);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   function deleteBreak(event, index) {
@@ -44,15 +49,13 @@ function setAlarm() {
     removeTime = timeArray.splice(index, 1)
     console.log(removeTime);
     axios.put("/user", { breaktime: timeArray })
-    .then(req => {
-      if (req.user) {
-        console.log("removed");
+      .then(req => {
+        if (req.user) {
+          console.log("removed");
         }
       })
       .then(getBreaks());
   }
-
-
   return (
     <>
       <CardGroup>
@@ -73,16 +76,16 @@ function setAlarm() {
           </div>
           <Slots />
           <div className="container">
-      <CardGroup>
-        <Card>
-      <h3>SCHEDULE</h3>
-          <Card.Body>
-     {timeArray.map((t, index) => <li key={index}>{t}<button onClick={event => {deleteBreak(event, index)}}>REMOVE</button></li>)}
-          </Card.Body>
-        </Card>
-      </CardGroup>
-      
-      </div>
+            <CardGroup>
+              <Card>
+                <h3>SCHEDULE</h3>
+                <Card.Body>
+                  {timeArray.map((t, index) => <li key={index}>{t}<Button onClick={event => { deleteBreak(event, index) }}>REMOVE</Button></li>)}
+                </Card.Body>
+              </Card>
+            </CardGroup>
+
+          </div>
         </Card>
       </CardGroup>
     </>
