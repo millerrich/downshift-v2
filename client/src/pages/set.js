@@ -20,8 +20,8 @@ function setAlarm() {
   }, []);
 
   function saveBreak() {
-    timeArray.push(time);
-    axios.put("/user", { breaktime: timeArray })
+    setTimeArray(timeArray.concat(time))
+    axios.put("/user", { breaktime: timeArray.concat(time) })
       .then(req => {
         if (req.user) {
           console.log("updated");
