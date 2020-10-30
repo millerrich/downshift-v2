@@ -84,7 +84,6 @@ router.get('/userdata', (req, res) => {
         res.send(err);
       } else {
         res.send(result);
-        console.log(result);
       }
     });
   } else {

@@ -22,7 +22,6 @@ function setAlarm() {
 
   useEffect(() => {
     if (timeArray.includes(seconds)) {
-      alert("TEST");
       setVisibility(false);
     }
   }, [seconds]);
@@ -68,7 +67,6 @@ function setAlarm() {
 
   function deleteBreak(event, index) {
     event.preventDefault();
-    console.log("clicked");
     console.log(index);
     let removeTime = [];
     removeTime = timeArray.splice(index, 1);
