@@ -6,11 +6,8 @@ import moment from "moment";
 import Slots from "../components/slot";
 import axios from "axios";
 import Schedule from "../components/schedule";
-import * as Tone from "tone";
 let current;
 let timer;
-const synth = new Tone.Synth().toDestination();
-
 
 function setAlarm() {
   const [seconds, setSeconds] = useState(current);
@@ -19,27 +16,18 @@ function setAlarm() {
   const [visibility, setVisibility] = useState(true);
 
   useEffect(() => {
-    console.log("use effect number one");
     getTime();
     getBreaks();
   }, []);
 
   useEffect(() => {
-    console.log("use effect number two");
     if (timeArray.includes(seconds)) {
-      console.log("use effect conditional");
       setVisibility(false);
-      const now = Tone.now();
-      synth.triggerAttackRelease("C4", 1, now)
-      synth.triggerAttackRelease("E4", 1, now + 0.5)
-      synth.triggerAttackRelease("G4", 1, now + 1)
     }
   }, [seconds]);
 
-  function goBack(e){
-    console.log("function go back pre interval")
-    setTimeout(function () {
-      console.log("hit function go back");
+  function goBack(e) {
+    setInterval(function () {
       setVisibility(e);
     }, 30000);
   }
@@ -99,16 +87,9 @@ function setAlarm() {
 
       
         {visibility ? (
-          <div
-            className="mt-5"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
+         <>
             <Card className='clockBckg'>
-            <CardGroup className="cG" style={{
+            <CardGroup className="ff" style={{
               display: 'flex',
               justifyContent: 'center',
             }}>
@@ -134,13 +115,13 @@ function setAlarm() {
 
                 </Card.Title>
                 <Card.Text>
-                  <p>To get started, click on the clock and choose the times youa are going to take your daily breaks <br />↩</p>
+                  <p>To get started, click on the clock and choose the times you are going to take your daily breaks <br />↩</p>
                 </Card.Text>
               </Card.Body>
             </Card>
             </CardGroup>
             </Card>
-          </div>
+          </>
 
         ) : (
             <div>
@@ -154,15 +135,12 @@ function setAlarm() {
 
       <Card className='coloredBckg'>
 
-        <CardGroup className="cG" style={{
+        <CardGroup className="ff" style={{
           display: 'flex',
           justifyContent: 'center',
         }}>
            <Card className='schedulePointer' style={{ width: "20rem" }}>
             <Card.Body>
-              <Card.Title>
-
-              </Card.Title>
               <Card.Text>
                 <p>Your set breaks will be tracked in the scheduler <br /> ↪</p>
               </Card.Text>
@@ -193,12 +171,7 @@ function setAlarm() {
               </Card.Text>
             </Card.Body>
           </Card>
-
-
-
-         
         </CardGroup>
-
       </Card>
 
 
