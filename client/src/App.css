@@ -255,21 +255,41 @@ section {
     width: 10rem;
   }
   .Schedule{
-    display: flex;
+    display: center !important;
+    align-items: center !important;
     justify-content: center !important;
     align-self: center !important;
     margin: 0 !important;
-    width: 14rem !important;
-    margin-left: 1rem !important;
-    margin-top: -18.2rem !important;
+    padding: 0 !important;
+    width: 30rem !important;
+    
+    margin-left: -32rem !important;
+    margin-right: 2rem !important;
+    margin-top: -7rem !important;
   }
+  
 
   .coloredBckg{
-    margin-left: 3rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .clockBckg{
-    margin-left: 3rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .clock{
+    display: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    margin: 0 !important;
+    margin-left: 2rem !important;
+    padding: 0 !important;
+  }
+
+  .removeB{
+    margin-right: 1rem !important;
   }
   
 }
@@ -289,5 +309,9 @@ section {
   }
   .bS1{
     width: 15rem !important;
+  }
+  .clock{
+    margin-left: 0 !important;
+    margin-left: 1.3rem !important;
   }
 }
