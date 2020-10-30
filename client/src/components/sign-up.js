@@ -31,9 +31,27 @@ class Signup extends Component {
       .then(response => {
         if (!response.data.errmsg) {
           console.log('successful signup')
-          this.setState({ //redirect to login page
-            redirectTo: '/login'
-          })
+          axios
+            .post('/user/login', {
+              username: this.state.username,
+              password: this.state.password
+            })
+            .then(response => {
+              if (response.status === 200) {
+                // update App.js state
+                this.props.updateUser({
+                  loggedIn: true,
+                  username: response.data.username
+                })
+                // update the state to redirect to home
+                this.setState({
+                  redirectTo: '/'
+                })
+              }
+            }).catch(error => {
+              console.log(error);
+
+            })
         } else {
           console.log('username already taken')
         }
@@ -54,11 +72,11 @@ class Signup extends Component {
             justifyContent: 'center',
           }}>
             <Col lg={6} sm={12}>
-              <Card id="port"  className="text-center mt-5 bS1" style={{ width: '20rem', height: '15rem' }}>
+              <Card id="port" className="text-center mt-5 bS1" style={{ width: '20rem', height: '15rem' }}>
                 <Card.Body>
-                <Card.Title>
-                  <h4 style={{fontWeight:'Bold'}}>Sign Up</h4>
-                </Card.Title>
+                  <Card.Title>
+                    <h4 style={{ fontWeight: 'Bold' }}>Sign Up</h4>
+                  </Card.Title>
                   <Card.Text>
                     <input className="form-input"
                       type="text"
@@ -78,9 +96,9 @@ class Signup extends Component {
 
                   </Card.Text>
                   <Card.Text className="displaySm" style={{ display: 'flex', justifyContent: 'center', }}>
-                    <Button  className="but" onClick={this.handleSubmit}
+                    <Button className="but" onClick={this.handleSubmit}
                       type="submit">Sign up</Button>
-                     
+
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -89,7 +107,7 @@ class Signup extends Component {
               <Card id="port" border="dark" className="text-center mt-5 bS" style={{ width: '20rem', height: '15rem', }}>
                 <Card.Body>
                   <Card.Title>
-                   <h2 className="loginTitle">Welcome!</h2> 
+                    <h2 className="loginTitle">Welcome!</h2>
                   </Card.Title>
                   <Card.Text>
                     If already have an account <br />click the login button below <br />
