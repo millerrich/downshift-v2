@@ -115,7 +115,7 @@ function setAlarm() {
           ) : (
             <div>
               <Slots goBack={goBack} />
-              <Button onClick={reset}>Go Back</Button>
+              <Button onClick={event => reset(event)}>Go Back</Button>
             </div>
           )}
           <div className="container">
