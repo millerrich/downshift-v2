@@ -16,18 +16,23 @@ function setAlarm() {
   const [visibility, setVisibility] = useState(true);
 
   useEffect(() => {
+    console.log("use effect number one");
     getTime();
     getBreaks();
   }, []);
 
   useEffect(() => {
+    console.log("use effect number two");
     if (timeArray.includes(seconds)) {
+      console.log("use effect conditional");
       setVisibility(false);
     }
   }, [seconds]);
 
   function goBack(e){
-    setInterval(function () {
+    console.log("function go back pre interval")
+    setTimeout(function () {
+      console.log("hit function go back");
       setVisibility(e);
     }, 30000);
   }
