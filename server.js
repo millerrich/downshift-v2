@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 // Route requires
 const user = require('./routes/user')
+const path = require('path');
 
 // MIDDLEWARE
 app.use(morgan('dev'))
@@ -18,6 +19,7 @@ app.use(
   })
 )
 app.use(bodyParser.json())
+app.use(express.static('client/public'));
 
 // Sessions
 app.use(
@@ -30,12 +32,15 @@ app.use(
 )
 
 // Passport
-app.use(passport.initialize())
-app.use(passport.session()) // calls the deserializeUser
+app.use(passport.initialize());
+app.use(passport.session()); // calls the deserializeUser
 
 
 // Routes
-app.use('/user', user)
+app.use('/user', user);
+app.get('*', (req, res) => {
+  res.send(path.join(__dirname, './client/build/index.html'));
+});
 
 // Starting Server 
 app.listen(PORT, () => {
