@@ -34,9 +34,9 @@ class Slots extends Component {
     this.setState({
       rolling: true
     });
-    setTimeout(() => {
-      this.setState({ rolling: false });
-    }, 700);
+    // setTimeout(() => {
+    //   this.setState({ rolling: false });
+    // }, 700);
 
     // looping through all 3 slots to start rolling
     this.slotRef.forEach((slot, i) => {
@@ -104,7 +104,7 @@ class Slots extends Component {
           <Col>
             <div
               className={!this.state.rolling ? "roll rolling" : "roll"}
-              onClick={!this.state.rolling && this.roll}
+              onClick={!this.state.rolling ? this.roll : undefined}
               disabled={this.state.rolling}
             >
               {this.state.rolling ? "Rolling..." : "ROLL"}
