@@ -18,9 +18,6 @@ class Slots extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      option1: "Meditate",
-      option2: "Run",
-      option3: "Read",
       rolling: false
     };
 
@@ -34,9 +31,9 @@ class Slots extends Component {
     this.setState({
       rolling: true
     });
-    // setTimeout(() => {
-    //   this.setState({ rolling: false });
-    // }, 700);
+    setTimeout(() => {
+      this.setState({ rolling: false });
+    }, 700);
 
     // looping through all 3 slots to start rolling
     this.slotRef.forEach((slot, i) => {
@@ -78,28 +75,6 @@ class Slots extends Component {
             </section>
           </Col>
         </Row>
-        {/* <div className="slot">
-          <section>
-            <div className="container" ref={this.slotRef[1]}>
-              {Slots.defaultProps.options.map(option => (
-                <div>
-                  <span>{option}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-        <div className="slot">
-          <section>
-            <div className="container" ref={this.slotRef[2]}>
-              {Slots.defaultProps.options.map(option => (
-                <div>
-                  <span>{option}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div> */}
         <Row>
           <Col>
             <div
