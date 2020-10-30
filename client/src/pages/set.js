@@ -26,7 +26,7 @@ function setAlarm() {
     }
   }, [seconds]);
 
-  function goBack(e){
+  function goBack(e) {
     setInterval(function () {
       setVisibility(e);
     }, 30000);
@@ -84,61 +84,112 @@ function setAlarm() {
   return (
     <>
       <p>{seconds}</p>
-      <CardGroup>
-        <Card className="homeCard">
-          {visibility ? (
-            <div
-              className="mt-5"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <Card className="clock">
-                <TimeKeeper
-                  time={time}
-                  onChange={(data) => setTime(data.formatted12)}
-                />
-                <Card.Body>
-                  <Card.Text className="text-center">
-                    <span className="timeSet">Selected Time: {time}</span>
-                  </Card.Text>
-                  <button className="setAlarm" onClick={saveBreak}>
-                    Set Alarm
-                  </button>
-                </Card.Body>
-              </Card>
-            </div>
-          ) : (
+
+      
+        {visibility ? (
+          <div
+            className="mt-5"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Card className='clockBckg'>
+            <CardGroup className="cG" style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}>
+            <Card className="clock">
+              <TimeKeeper
+                time={time}
+                onChange={(data) => setTime(data.formatted12)}
+              />
+              <Card.Body>
+                <Card.Text className="text-center">
+                  <p1 className="timeSet">Selected Time: {time}</p1>
+                </Card.Text>
+                <Button className="setAlarm" size='lg' onClick={saveBreak}>
+                  Set Alarm
+                  </Button>
+              </Card.Body>
+
+
+            </Card>
+            <Card className='clockPointer' style={{ width: "25rem" }}>
+              <Card.Body>
+                <Card.Title>
+
+                </Card.Title>
+                <Card.Text>
+                  <p>To get started, click on the clock and choose the times youa are going to take your daily breaks <br />↩</p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            </CardGroup>
+            </Card>
+          </div>
+
+        ) : (
             <div>
               <Slots goBack={goBack} />
               <Button onClick={event => reset(event)}>Go Back</Button>
             </div>
+
           )}
-          <div className="container">
-            <CardGroup>
-              <Card>
-                <h3>SCHEDULE</h3>
-                <Card.Body>
-                  {timeArray.map((t, index) => (
-                    <li key={index}>
-                      {t}
-                      <Button
-                        onClick={(event) => {
-                          deleteBreak(event, index);
-                        }}
-                      >
-                        REMOVE
+      
+
+
+      <Card className='coloredBckg'>
+
+        <CardGroup className="cG" style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}>
+           <Card className='schedulePointer' style={{ width: "20rem" }}>
+            <Card.Body>
+              <Card.Title>
+
+              </Card.Title>
+              <Card.Text>
+                <p>Your set breaks will be tracked in the scheduler <br /> ↪</p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card className="Schedule" style={{ width: '20rem', height: '19rem' }}>
+            <Card.Title>
+              <h3 className="titleWords">Schedule</h3>
+            </Card.Title>
+            <Card.Body>
+              <Card.Text >
+                
+                {timeArray.map((t, index) => (
+                  <p className="scheduleBorder">
+                  <li key={index}>
+                    {t}
+                    <Button className="removeB"
+                      onClick={(event) => {
+                        deleteBreak(event, index);
+                      }}
+                    >
+                      REMOVE
                       </Button>
-                    </li>
-                  ))}
-                </Card.Body>
-              </Card>
-            </CardGroup>
-          </div>
-        </Card>
-      </CardGroup>
+                  </li>
+                  </p>
+                ))}
+                
+              </Card.Text>
+            </Card.Body>
+          </Card>
+
+
+
+         
+        </CardGroup>
+
+      </Card>
+
+
     </>
   );
 }
