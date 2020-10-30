@@ -18,9 +18,6 @@ class Slots extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      option1: "Meditate",
-      option2: "Run",
-      option3: "Read",
       rolling: false
     };
 
@@ -78,33 +75,11 @@ class Slots extends Component {
             </section>
           </Col>
         </Row>
-        {/* <div className="slot">
-          <section>
-            <div className="container" ref={this.slotRef[1]}>
-              {Slots.defaultProps.options.map(option => (
-                <div>
-                  <span>{option}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-        <div className="slot">
-          <section>
-            <div className="container" ref={this.slotRef[2]}>
-              {Slots.defaultProps.options.map(option => (
-                <div>
-                  <span>{option}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div> */}
         <Row>
           <Col>
             <div
               className={!this.state.rolling ? "roll rolling" : "roll"}
-              onClick={!this.state.rolling && this.roll}
+              onClick={!this.state.rolling ? this.roll : undefined}
               disabled={this.state.rolling}
             >
               {this.state.rolling ? "Rolling..." : "ROLL"}
