@@ -19,8 +19,9 @@ app.use(
   })
 )
 app.use(bodyParser.json())
-app.use(express.static('client/public'));
-
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/public'));
+};
 // Sessions
 app.use(
   session({
