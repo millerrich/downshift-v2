@@ -6,8 +6,11 @@ import moment from "moment";
 import Slots from "../components/slot";
 import axios from "axios";
 import Schedule from "../components/schedule";
+import * as Tone from "tone";
 let current;
 let timer;
+const synth = new Tone.Synth().toDestination();
+
 
 function setAlarm() {
   const [seconds, setSeconds] = useState(current);
@@ -26,6 +29,10 @@ function setAlarm() {
     if (timeArray.includes(seconds)) {
       console.log("use effect conditional");
       setVisibility(false);
+      const now = Tone.now();
+      synth.triggerAttackRelease("C4", 1, now)
+      synth.triggerAttackRelease("E4", 1, now + 0.5)
+      synth.triggerAttackRelease("G4", 1, now + 1)
     }
   }, [seconds]);
 
