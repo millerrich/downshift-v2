@@ -22,6 +22,7 @@ section {
   margin: 0 auto !important;
 }
 
+
 .container {
   position: relative;
   top: 2px;
@@ -86,5 +87,94 @@ section {
 }
 
 .navColor{
-  background-color: #233C67;
+  background-color: #23395d;
+}
+
+.form-input{
+  width: 20rem !important;
+  border: 1.8px black solid !important;
+  margin-bottom: 10px !important;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(82, 82, 82) !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+.bS{
+  padding-left: -30px;
+  border: 2px solid #779CAB !important;
+  background-color: #779CAB !important;
+  color: white;
+  font-size: 20px;
+}
+
+.bS1{
+  border: 2px solid #23395d !important;
+  background-color: #23395d !important;
+  color: white;
+}
+
+
+.signupSwitch{
+  font-size: 24px !important;
+  font-weight: bolder;
+  border-top: 5px solid black;
+}
+.signColor{
+  color: #85CDCA !important;
+}
+
+.signupSwitch:hover{
+  color: #FAC748 !important;
+}
+
+.but{
+  background-color: #FAC748 !important;
+  color: black !important;
+}
+@media only screen and (min-width: 788px) {
+.formMargin{
+  padding-top: 100px !important;
+}
+.bS1{
+  padding-top: 40px !important;
+}
+.bS{
+  padding-top: 40px !important;
+}
+}
+
+@media only screen and (max-width: 787px) {
+  .displaySm{
+    display: inline-block !important;
+  }
+  .cG{
+    display: inline-block !important;
+  }
+  .bS{
+    width: 18rem !important;
+  }
+  .bS1{
+    width: 18rem !important;
+  }
+
+  
+}
+
+@media only screen and (max-width: 360px) and (min-width: 359px) {
+  .bS{
+    width: 15rem !important;
+  }
+  .bS1{
+    width: 15rem !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .bS{
+    width: 15rem !important;
+  }
+  .bS1{
+    width: 15rem !important;
+  }
 }
