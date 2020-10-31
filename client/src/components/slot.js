@@ -61,7 +61,7 @@ class Slots extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className = "rollPage">
         <Row>
           <Col>
             <section>
