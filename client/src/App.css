@@ -21,6 +21,17 @@ section {
   cursor: default;
   margin: 0 auto !important;
 }
+.goBack{
+  display: flex !important;
+  justify-self: flex-start !important;
+  margin-bottom: 2rem !important;
+  margin-left: 1rem;
+  background-color: #FAC748 !important;
+  color: #000 !important;
+  border-color: #000 !important;
+  font-weight: bold !important;
+}
+
 
 .buttonHome{
   background-color: #FAC748;
@@ -55,16 +66,18 @@ section {
   padding: 10px;
   text-align: center;
   font-size: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 3px solid black;
   margin: 0 auto;
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.3rem !important;
 }
 
 .rolling {
   position: relative;
   animation: blinkingText 1.2s infinite;
   margin: 0 auto;
-
+  border-radius: 10px;
 }
 
 .leftBorder{
@@ -199,8 +212,6 @@ section {
   color: white;
   
 }
-
-
 
 .signupSwitch{
   font-size: 24px !important;

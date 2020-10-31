@@ -6,44 +6,48 @@ import moment from "moment";
 import Slots from "../components/slot";
 import axios from "axios";
 import Schedule from "../components/schedule";
+import * as Tone from "tone";
 let current;
 let timer;
-
+const synth = new Tone.Synth().toDestination();
 function setAlarm() {
   const [seconds, setSeconds] = useState(current);
   const [time, setTime] = useState(current);
   const [timeArray, setTimeArray] = useState([]);
   const [visibility, setVisibility] = useState(true);
-
   useEffect(() => {
+    console.log("use effect number one");
     getTime();
     getBreaks();
   }, []);
-
   useEffect(() => {
+    console.log("use effect number two");
     if (timeArray.includes(seconds)) {
+      console.log("use effect conditional");
       setVisibility(false);
+      const now = Tone.now();
+      synth.triggerAttackRelease("C4", 1, now)
+      synth.triggerAttackRelease("E4", 1, now + 0.5)
+      synth.triggerAttackRelease("G4", 1, now + 1)
     }
   }, [seconds]);
-
-  function goBack(e) {
-    setInterval(function () {
+  function goBack(e){
+    console.log("function go back pre interval")
+    setTimeout(function () {
+      console.log("hit function go back");
       setVisibility(e);
     }, 30000);
   }
-
   function getTime() {
     setInterval(function () {
       current = moment().format("h:mm a");
       setSeconds(current);
     }, 1000);
   }
-
   function reset(event) {
     event.preventDefault();
     setVisibility(true);
   }
-
   function saveBreak() {
     setTimeArray(timeArray.concat(time));
     axios.put("/user", { breaktime: timeArray.concat(time) }).then((req) => {
@@ -53,7 +57,6 @@ function setAlarm() {
     });
     getBreaks();
   }
-
   function getBreaks() {
     axios
       .get("/user/userdata")
@@ -64,7 +67,6 @@ function setAlarm() {
         console.log(error);
       });
   }
-
   function deleteBreak(event, index) {
     event.preventDefault();
     console.log(index);
@@ -100,7 +102,7 @@ function setAlarm() {
               />
               <Card.Body>
                 <Card.Text className="text-center">
-                  <p1 className="timeSet">Selected Time: {time}</p1>
+                  <p className="timeSet">Selected Time: {time}</p>
                 </Card.Text>
                 <Button className="setAlarm" size='lg' onClick={saveBreak}>
                   Set Alarm
@@ -125,8 +127,9 @@ function setAlarm() {
 
         ) : (
             <div>
-              <Slots goBack={goBack} />
-              <Button onClick={event => reset(event)}>Go Back</Button>
+              <Button size='lg' className = 'goBack' onClick={event => reset(event)}>↲ Go Back</Button>
+              <Slots  goBack={goBack} />
+              
             </div>
 
           )}
