@@ -9,17 +9,21 @@ import Schedule from "../components/schedule";
 import * as Tone from "tone";
 let current;
 let timer;
+
 const synth = new Tone.Synth().toDestination();
+
 function setAlarm() {
   const [seconds, setSeconds] = useState(current);
   const [time, setTime] = useState(current);
   const [timeArray, setTimeArray] = useState([]);
   const [visibility, setVisibility] = useState(true);
+  
   useEffect(() => {
     console.log("use effect number one");
     getTime();
     getBreaks();
   }, []);
+  
   useEffect(() => {
     console.log("use effect number two");
     if (timeArray.includes(seconds)) {
@@ -31,6 +35,7 @@ function setAlarm() {
       synth.triggerAttackRelease("G4", 1, now + 1)
     }
   }, [seconds]);
+  
   function goBack(e){
     console.log("function go back pre interval")
     setTimeout(function () {
@@ -38,16 +43,19 @@ function setAlarm() {
       setVisibility(e);
     }, 30000);
   }
+  
   function getTime() {
     setInterval(function () {
       current = moment().format("h:mm a");
       setSeconds(current);
     }, 1000);
   }
+  
   function reset(event) {
     event.preventDefault();
     setVisibility(true);
   }
+  
   function saveBreak() {
     setTimeArray(timeArray.concat(time));
     axios.put("/user", { breaktime: timeArray.concat(time) }).then((req) => {
@@ -57,6 +65,7 @@ function setAlarm() {
     });
     getBreaks();
   }
+  
   function getBreaks() {
     axios
       .get("/user/userdata")
@@ -67,6 +76,7 @@ function setAlarm() {
         console.log(error);
       });
   }
+  
   function deleteBreak(event, index) {
     event.preventDefault();
     console.log(index);
