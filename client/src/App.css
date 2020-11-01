@@ -185,7 +185,7 @@ section {
   border: black 2px solid !important;
   color: black;
   box-shadow: 3px 4px 4px black;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .schedulePointer{
   background-color: #23395d !important;
@@ -274,7 +274,6 @@ section {
     margin: 0 !important;
     padding: 0 !important;
     width: 30rem !important;
-    
     margin-left: -32rem !important;
     margin-right: 2rem !important;
     margin-top: -7rem !important;
