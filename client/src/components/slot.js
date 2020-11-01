@@ -78,7 +78,7 @@ class Slots extends Component {
         <Row>
           <Col>
             <div
-              className={!this.state.rolling ? "roll rolling" : "roll"}
+              className="roll"
               onClick={!this.state.rolling ? this.roll : undefined}
               disabled={this.state.rolling}
             >
