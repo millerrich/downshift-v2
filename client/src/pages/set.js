@@ -5,10 +5,8 @@ import "../App.css";
 import moment from "moment";
 import Slots from "../components/slot";
 import axios from "axios";
-import Schedule from "../components/schedule";
 import * as Tone from "tone";
 let current;
-let timer;
 
 const synth = new Tone.Synth().toDestination();
 
@@ -19,13 +17,11 @@ function setAlarm() {
   const [visibility, setVisibility] = useState(true);
   
   useEffect(() => {
-    console.log("use effect number one");
     getTime();
     getBreaks();
   }, []);
   
   useEffect(() => {
-    console.log("use effect number two");
     if (timeArray.includes(seconds)) {
       console.log("use effect conditional");
       setVisibility(false);
@@ -37,9 +33,7 @@ function setAlarm() {
   }, [seconds]);
   
   function goBack(e){
-    console.log("function go back pre interval")
     setTimeout(function () {
-      console.log("hit function go back");
       setVisibility(e);
     }, 30000);
   }
