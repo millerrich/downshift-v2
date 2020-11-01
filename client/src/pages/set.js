@@ -111,8 +111,8 @@ function setAlarm() {
                 onChange={(data) => setTime(data.formatted12)}
               />
               <Card.Body>
-                <Card.Text className="text-center">
-                  <p className="timeSet">Selected Time: {time}</p>
+                <Card.Text className="text-center timeSet">
+                  Selected Time: {time}
                 </Card.Text>
                 <Button className="setAlarm" size='lg' onClick={saveBreak}>
                   Set Alarm
@@ -127,7 +127,7 @@ function setAlarm() {
 
                 </Card.Title>
                 <Card.Text>
-                  <p>To get started, click on the clock and choose the times you are going to take your daily breaks <br />↩</p>
+                  To get started, click on the clock and choose the times you are going to take your daily breaks <br />↩
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -155,7 +155,7 @@ function setAlarm() {
            <Card className='schedulePointer' style={{ width: "20rem" }}>
             <Card.Body>
               <Card.Text>
-                <p>Your set breaks will be tracked in the scheduler <br /> ↪</p>
+                Your set breaks will be tracked in the scheduler <br /> ↪
               </Card.Text>
             </Card.Body>
           </Card>
@@ -167,8 +167,7 @@ function setAlarm() {
               <Card.Text >
                 
                 {timeArray.map((t, index) => (
-                  <p className="scheduleBorder">
-                  <li key={index}>
+                  <li key={index} className="scheduleBorder">
                     {t}
                     <Button className="removeB"
                       onClick={(event) => {
@@ -178,7 +177,6 @@ function setAlarm() {
                       REMOVE
                       </Button>
                   </li>
-                  </p>
                 ))}
                 
               </Card.Text>
