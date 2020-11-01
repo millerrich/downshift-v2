@@ -44,7 +44,7 @@ section {
 }
 .scheduleBorder{
   border-bottom: solid 2px black !important;
-  ;
+  list-style-type: none;
 }
 
 
