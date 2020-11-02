@@ -39,3 +39,6 @@ You can visit the deployed app at: https://glacial-wildwood-12509.herokuapp.com/
 * zapier for text message reminders
 * social media blocking
 * pwa capable of running in background
+
+## Acknowledgements
+Vivek Doshi - Source Code for the slot machine animation.
