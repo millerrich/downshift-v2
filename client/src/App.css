@@ -35,7 +35,7 @@ section {
 }
 
 .goBack:hover{
-  color: #FAC748 !important;
+  color: #779CAB !important;
 }
 
 
@@ -86,7 +86,10 @@ section {
   margin: 0 auto;
   border-radius: 10px;
 }
-
+.currentTime{
+  font-weight: bold;
+  font-size: 19px;
+}
 .leftBorder{
   border-left: black 2px solid !important;
 }

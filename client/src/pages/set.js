@@ -89,9 +89,7 @@ function setAlarm() {
 
   return (
     <>
-      
-
-      
+      <p className='currentTime'>Current Time: {seconds}</p>
         {visibility ? (
          <>
             <Card className='clockBckg'>
@@ -112,7 +110,6 @@ function setAlarm() {
                   Set Alarm
                   </Button>
               </Card.Body>
-
 
             </Card>
             <Card className='clockPointer' style={{ width: "25rem" }}>
