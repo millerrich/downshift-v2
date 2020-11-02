@@ -15,7 +15,7 @@ The goal is to prevent the user from feeling as though they have nothing to do a
 positive alternatives to what they might default to on a break (i.e. browsing social media, watching youtube, shopping etc...)
 
 ## Usage
-
+![image](./client/src/images/downshift-demo.gif)  
 The user will be provided a clock which they can set the time of their breaks on and save their scheduled break.
 The user will be able to view their scheduled breaks on a separate page.
 At the scheduled break the user will be alerted and shown a game which will help them to select
