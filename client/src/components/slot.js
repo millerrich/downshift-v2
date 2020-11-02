@@ -12,7 +12,7 @@ class Slots extends Component {
       "Relaxing Music",
       "Journal",
       "Brain Teasers",
-      "Grab lunch with a friend",
+      "Lunch w/ friend",
       "Treat yourself",
       "Puzzle",
       "DIY Project"
