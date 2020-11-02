@@ -14,6 +14,8 @@ on a productive activity to do on their break, for example meditating, exercise,
 The goal is to prevent the user from feeling as though they have nothing to do and provide
 positive alternatives to what they might default to on a break (i.e. browsing social media, watching youtube, shopping etc...)
 
+Here is a powerpoint that explains more about our project: https://drive.google.com/file/d/1igBGOkI0RDcMXuq7DNI_NwBj7sHkc15I/view?usp=sharing
+
 ## Usage
 
 The user will be provided a clock which they can set the time of their breaks on and save their scheduled break.
@@ -21,6 +23,7 @@ The user will be able to view their scheduled breaks on a separate page.
 At the scheduled break the user will be alerted and shown a game which will help them to select
 a productive way to spend their break time.
 
+You can visit the deployed app at: https://glacial-wildwood-12509.herokuapp.com/
 
 ## Technologies
 
@@ -36,7 +39,3 @@ a productive way to spend their break time.
 * zapier for text message reminders
 * social media blocking
 * pwa capable of running in background
-
-## Sketch
-
-![](project3.png)
