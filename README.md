@@ -17,7 +17,7 @@ positive alternatives to what they might default to on a break (i.e. browsing so
 Here is a powerpoint that explains more about our project: https://drive.google.com/file/d/1igBGOkI0RDcMXuq7DNI_NwBj7sHkc15I/view?usp=sharing
 
 ## Usage
-
+![image](./client/src/images/downshift-demo.gif)  
 The user will be provided a clock which they can set the time of their breaks on and save their scheduled break.
 The user will be able to view their scheduled breaks on a separate page.
 At the scheduled break the user will be alerted and shown a game which will help them to select
