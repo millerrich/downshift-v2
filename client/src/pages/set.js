@@ -89,7 +89,7 @@ function setAlarm() {
 
   return (
     <>
-      <p>{seconds}</p>
+      
 
       
         {visibility ? (
