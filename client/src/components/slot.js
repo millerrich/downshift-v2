@@ -9,9 +9,13 @@ class Slots extends Component {
       "Run",
       "Walk the Dog",
       "Read",
-      "Paint",
+      "Relaxing Music",
       "Journal",
-      "Brain Teasers"
+      "Brain Teasers",
+      "Grab lunch with a friend",
+      "Treat yourself",
+      "Puzzle",
+      "DIY Project"
     ]
   };
 
