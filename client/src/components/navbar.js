@@ -41,9 +41,9 @@ class Navbar extends Component {
             </Col>
           ) : (
               <Col className="navbar-section float-left">
-                <Link to="/" className="btn btn-link text-secondary">
+                {/* <Link to="/" className="btn btn-link text-secondary">
                   <span className="text-secondary">Home</span>
-                </Link>
+                </Link> */}
                 <Link to="/login" className="btn btn-link text-secondary">
                   <span className="text-secondary">Login</span>
                 </Link>
